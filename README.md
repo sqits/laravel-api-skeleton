@@ -1,5 +1,7 @@
 # Package to create api skeletons with artisan
 
+[![StyleCI](https://github.styleci.io/repos/147676542/shield)](https://styleci.io/repos/147676542)
+
 This Laravel package creates an artisan command to generate an api skeleton.
 
 ``` bash
