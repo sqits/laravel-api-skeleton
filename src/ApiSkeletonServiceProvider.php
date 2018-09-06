@@ -16,7 +16,7 @@ class ApiSkeletonServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/apiskeleton.php' => config_path('apiskeleton.php'),
-        ]);
+        ], 'config');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
