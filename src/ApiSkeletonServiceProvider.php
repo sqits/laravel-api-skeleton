@@ -20,7 +20,7 @@ class ApiSkeletonServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ApiSkeletonMakeCommand::class
+                ApiSkeletonMakeCommand::class,
             ]);
         }
     }
