@@ -34,7 +34,6 @@ class ApiSkeletonMakeCommand extends Command
      *
      * @var string
      */
-
     protected $namespace = 'ApiSkeleton';
 
     /**
@@ -42,23 +41,20 @@ class ApiSkeletonMakeCommand extends Command
      *
      * @var string
      */
-
     protected $modelName = 'ApiSkeleton';
 
     /**
-     * The model, if the model is created in the skeleton
+     * The model, if the model is created in the skeleton.
      *
      * @var string
      */
-
     protected $model = null;
 
     /**
-     * The controller, if the controller is created in the skeleton
+     * The controller, if the controller is created in the skeleton.
      *
      * @var string
      */
-
     protected $controller = null;
 
     /**
@@ -101,10 +97,11 @@ class ApiSkeletonMakeCommand extends Command
      *
      * return void
      */
-    private function askNamespace() {
+    private function askNamespace()
+    {
         $this->namespace = $this->ask('What is the namespace for the skeleton?', 'ApiSkeleton');
 
-        if (substr($this->namespace, -1) === '/'){
+        if (substr($this->namespace, -1) === '/') {
             $this->namespace = substr($this->namespace, -1);
         }
     }
@@ -122,7 +119,6 @@ class ApiSkeletonMakeCommand extends Command
         $this->modelName = $this->ask('What is the name for the skeleton?', 'ApiSkeleton');
     }
 
-
     /**
      * Creates the model if the model should be created due the config.
      *
@@ -133,14 +129,14 @@ class ApiSkeletonMakeCommand extends Command
      */
     private function makeModel()
     {
-        if (!config('apiskeleton.files.models')) {
+        if (! config('apiskeleton.files.models')) {
             return;
         }
 
         $this->model = $this->modelName;
 
-        if(config('apiskeleton.folders.models') !== null) {
-            $this->model  = sprintf(
+        if (config('apiskeleton.folders.models') !== null) {
+            $this->model = sprintf(
                 '%s/%s/%s',
                 config('apiskeleton.folders.models'),
                 $this->namespace,
@@ -149,14 +145,14 @@ class ApiSkeletonMakeCommand extends Command
         }
 
         Artisan::call('make:model', [
-            'name' => $this->model ,
+            'name' => $this->model,
             '--migration' => config('apiskeleton.files.migrations'),
         ]);
 
         $this->info("The model {$this->model} has been created.");
 
         if (config('apiskeleton.files.migrations')) {
-            $this->info("The migration for the model has been created");
+            $this->info('The migration for the model has been created');
         }
     }
 
@@ -170,7 +166,7 @@ class ApiSkeletonMakeCommand extends Command
      */
     private function makeController()
     {
-        if (!config('apiskeleton.files.controllers')) {
+        if (! config('apiskeleton.files.controllers')) {
             return;
         }
 
@@ -199,7 +195,7 @@ class ApiSkeletonMakeCommand extends Command
      */
     private function makeRequests()
     {
-        if (!config('apiskeleton.files.requests')) {
+        if (! config('apiskeleton.files.requests')) {
             return;
         }
 
@@ -236,7 +232,7 @@ class ApiSkeletonMakeCommand extends Command
      */
     private function makeResources()
     {
-        if (!config('apiskeleton.files.resources')) {
+        if (! config('apiskeleton.files.resources')) {
             return;
         }
 
@@ -264,7 +260,7 @@ class ApiSkeletonMakeCommand extends Command
 
         Artisan::call('make:resource', [
             'name' => $resourceCollectionName,
-            '--collection' => config('apiskeleton.use_pluralized_collections')
+            '--collection' => config('apiskeleton.use_pluralized_collections'),
         ]);
 
         $this->info("The resources {$resourceName} and {$resourceCollectionName} has been created.");
@@ -280,7 +276,7 @@ class ApiSkeletonMakeCommand extends Command
      */
     private function makeTests()
     {
-        if (!config('apiskeleton.files.tests')) {
+        if (! config('apiskeleton.files.tests')) {
             return;
         }
 
@@ -289,12 +285,12 @@ class ApiSkeletonMakeCommand extends Command
             'Show',
             'Store',
             'Update',
-            'Destroy'
+            'Destroy',
         ];
 
         $createdFiles = [];
 
-        foreach($actionNames as $actionName) {
+        foreach ($actionNames as $actionName) {
             $testName = sprintf(
                 '%s/%s%sTest',
                 $this->namespace,
@@ -304,14 +300,13 @@ class ApiSkeletonMakeCommand extends Command
 
             Artisan::call('make:test', [
                 'name' => $testName,
-                '--unit' => config('apiskeleton.files.tests') === 'unit'
+                '--unit' => config('apiskeleton.files.tests') === 'unit',
             ]);
 
             $createdFiles[] = $testName;
         }
 
-        $this->info("The tests ".implode(', ', $createdFiles)." has been created.");
-
+        $this->info('The tests '.implode(', ', $createdFiles).' has been created.');
     }
 
     /**
@@ -368,7 +363,7 @@ class ApiSkeletonMakeCommand extends Command
             'name' => $seederFileName,
         ]);
 
-        if(!$this->files->isDirectory($seederDirectoryName)){
+        if (! $this->files->isDirectory($seederDirectoryName)) {
             $this->files->makeDirectory($seederDirectoryName, 0755, true);
         }
 
@@ -392,7 +387,7 @@ class ApiSkeletonMakeCommand extends Command
      */
     private function makeFactory()
     {
-        if (!config('apiskeleton.files.factories')) {
+        if (! config('apiskeleton.files.factories')) {
             return;
         }
 
@@ -418,7 +413,7 @@ class ApiSkeletonMakeCommand extends Command
             '--model' => config('apiskeleton.files.models') ? $this->model : false,
         ]);
 
-        if(!$this->files->isDirectory($factoryDirectoryName)){
+        if (! $this->files->isDirectory($factoryDirectoryName)) {
             $this->files->makeDirectory($factoryDirectoryName, 0755, true);
         }
 
@@ -428,6 +423,5 @@ class ApiSkeletonMakeCommand extends Command
         );
 
         $this->info("The factory {$factoryFileName} has been created.");
-
     }
 }

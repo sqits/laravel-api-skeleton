@@ -93,7 +93,6 @@ return [
 
     ],
 
-
     /*
      * By default the resource collection will append `Collection` to the name. If you would
      * like to have the name of the collection pluralized set this option to true.
