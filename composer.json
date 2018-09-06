@@ -1,0 +1,29 @@
+{
+    "name": "sqits/laravel-api-skeleton",
+    "description": "Package to create a complete Laravel API resource according to stub files.",
+    "keywords": ["laravel", "api", "resource", "crud", "skeleton", "artisan"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ruud Schaaphuizen",
+            "email": "r.schaaphuizen@sqits.nl",
+            "homepage": "https://www.sqits.nl",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/sqits/laravel-api-skeleton"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sqits\\ApiSkeleton\\ApiSkeletonServiceProvider"
+            ]
+        }
+    }
+}
