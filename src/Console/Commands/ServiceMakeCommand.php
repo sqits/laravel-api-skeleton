@@ -2,9 +2,8 @@
 
 namespace Sqits\ApiSkeleton\Console\Commands;
 
-use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Facades\File;
-use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Console\GeneratorCommand;
 
 class ServiceMakeCommand extends GeneratorCommand
 {
@@ -36,7 +35,7 @@ class ServiceMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        if (File::exists(resource_path('stubs/apiskeleton/service.stub'))){
+        if (File::exists(resource_path('stubs/apiskeleton/service.stub'))) {
             return resource_path('stubs/apiskeleton/service.stub');
         }
 

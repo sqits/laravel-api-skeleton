@@ -3,9 +3,9 @@
 namespace Sqits\ApiSkeleton;
 
 use Illuminate\Support\ServiceProvider;
-use Sqits\ApiSkeleton\Console\Commands\ApiSkeletonMakeCommand;
-use Sqits\ApiSkeleton\Console\Commands\RepositoryMakeCommand;
 use Sqits\ApiSkeleton\Console\Commands\ServiceMakeCommand;
+use Sqits\ApiSkeleton\Console\Commands\RepositoryMakeCommand;
+use Sqits\ApiSkeleton\Console\Commands\ApiSkeletonMakeCommand;
 
 class ApiSkeletonServiceProvider extends ServiceProvider
 {
