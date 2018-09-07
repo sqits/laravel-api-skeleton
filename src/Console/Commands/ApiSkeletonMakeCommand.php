@@ -471,6 +471,7 @@ class ApiSkeletonMakeCommand extends Command
 
         if (! config('apiskeleton.folders.services')) {
             $this->warn('The option to create a service is enabled, but there is no folder set where it should be created.');
+
             return;
         }
 
@@ -506,6 +507,7 @@ class ApiSkeletonMakeCommand extends Command
 
         if (! config('apiskeleton.folders.repositories')) {
             $this->warn('The option to create a repository is enabled, but there is no folder set where it should be created.');
+
             return;
         }
 
