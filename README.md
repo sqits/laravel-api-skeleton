@@ -166,7 +166,7 @@ return [
          * your should add --service to the make:apiskeleton command.
          */
 
-        'services' => true,
+        'services' => false,
         
         /*
          * Define if the repositories should be created when a new API skeleton is created.
@@ -177,7 +177,7 @@ return [
          * your should add --repository to the make:apiskeleton command.
          */
 
-        'repositories' => true,
+        'repositories' => false,
 
     ],
 
