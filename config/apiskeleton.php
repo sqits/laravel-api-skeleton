@@ -78,6 +78,28 @@ return [
 
         'factories' => true,
 
+        /*
+         * Define if the services should be created when a new API skeleton is created.
+         * You should define a folder in the config where the service should be located.
+         *
+         * If this option is set to true, artisan will ask the user to confirm the generation
+         * of the service to make it optional per skeleton. If you want to skip the question
+         * your should add --service to the make:apiskeleton command.
+         */
+
+        'services' => true,
+
+        /*
+         * Define if the repositories should be created when a new API skeleton is created.
+         * You should define a folder in the config where the repository should be located.
+         *
+         * If this option is set to true, artisan will ask the user to confirm the generation
+         * of the factory to make it optional per skeleton. If you want to skip the question
+         * your should add --repository to the make:apiskeleton command.
+         */
+
+        'repositories' => true,
+
     ],
 
     'folders' => [
@@ -90,6 +112,20 @@ return [
          */
 
         'models' => null,
+
+        /*
+         * When creating the services, the services will be placed inside the given
+         * folder which will be placed inside the app folder of your application.
+         */
+
+        'services' => 'Services',
+
+        /*
+         * When creating the repositories, the repositories will be placed inside the given
+         * folder which will be placed inside the app folder of your application.
+         */
+
+        'repositories' => 'Repositories',
 
     ],
 

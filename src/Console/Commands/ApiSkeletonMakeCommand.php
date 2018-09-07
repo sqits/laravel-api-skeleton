@@ -13,7 +13,7 @@ class ApiSkeletonMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:apiskeleton';
+    protected $signature = 'make:apiskeleton {--repository} {--service}';
 
     /**
      * The console command description.
@@ -80,13 +80,16 @@ class ApiSkeletonMakeCommand extends Command
         $this->askNamespace();
         $this->askName();
 
-        $this->makeModel();
-        $this->makeController();
-        $this->makeRequests();
-        $this->makeResources();
-        $this->makeTests();
-        $this->makeSeeders();
-        $this->makeFactory();
+//        $this->makeModel();
+//        $this->makeController();
+//        $this->makeRequests();
+//        $this->makeResources();
+//        $this->makeTests();
+//        $this->makeSeeders();
+//        $this->makeFactory();
+
+        $this->makeService();
+        $this->makeRepository();
     }
 
     /**
@@ -117,6 +120,32 @@ class ApiSkeletonMakeCommand extends Command
     private function askName()
     {
         $this->modelName = $this->ask('What is the name for the skeleton?', 'ApiSkeleton');
+    }
+
+    /**
+     * Asks if there should be created a service for the Skeleton.
+     *
+     * @author Ruud Schaaphuizen (r.schaaphuizen@sqits.nl)
+     * @since 1.0.0
+     *
+     * return bool
+     */
+    private function askService()
+    {
+        return $this->confirm('Do you wish to create a Service for this skeleton? (add --service to skip this question)', 'yes');
+    }
+
+    /**
+     * Asks if there should be created a repository for the Skeleton.
+     *
+     * @author Ruud Schaaphuizen (r.schaaphuizen@sqits.nl)
+     * @since 1.0.0
+     *
+     * return bool
+     */
+    private function askRepository()
+    {
+        return $this->confirm('Do you wish to create a Repositoy for this skeleton? (add --repository to skip this question)', 'yes');
     }
 
     /**
@@ -423,5 +452,75 @@ class ApiSkeletonMakeCommand extends Command
         );
 
         $this->info("The factory {$factoryFileName} has been created.");
+    }
+
+    /**
+     * Creates the service according to the stub file. If the stub file is published
+     * then the published version of the sub file will be used.
+     *
+     * @author Ruud Schaaphuizen (r.schaaphuizen@sqits.nl)
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    private function makeService()
+    {
+        if (! config('apiskeleton.files.services')) {
+            return;
+        }
+
+        if (! config('apiskeleton.folders.services')) {
+            $this->warn('The option to create a service is enabled, but there is no folder set where it should be created.');
+            return;
+        }
+
+        if ($this->option('service') || $this->askService()) {
+            $serviceName = sprintf(
+                '%s/%sService',
+                $this->namespace,
+                $this->modelName
+            );
+
+            Artisan::call('make:apiskeleton-service', [
+                'name' => $serviceName,
+            ]);
+
+            $this->info("The service {$serviceName} has been created.");
+        }
+    }
+
+    /**
+     * Creates the repository according to the stub file. If the stub file is published
+     * then the published version of the sub file will be used.
+     *
+     * @author Ruud Schaaphuizen (r.schaaphuizen@sqits.nl)
+     * @since 1.0.0
+     *
+     * @return void
+     */
+    private function makeRepository()
+    {
+        if (! config('apiskeleton.files.repositories')) {
+            return;
+        }
+
+        if (! config('apiskeleton.folders.repositories')) {
+            $this->warn('The option to create a repository is enabled, but there is no folder set where it should be created.');
+            return;
+        }
+
+        if ($this->option('repository') || $this->askRepository()) {
+            $factoryName = sprintf(
+                '%s/%sFactory',
+                $this->namespace,
+                $this->modelName
+            );
+
+            Artisan::call('make:apiskeleton-repository', [
+                'name' => $factoryName,
+            ]);
+
+            $this->info("The repository {$factoryName} has been created.");
+        }
     }
 }

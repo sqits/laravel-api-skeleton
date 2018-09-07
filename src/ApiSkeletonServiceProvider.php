@@ -4,6 +4,8 @@ namespace Sqits\ApiSkeleton;
 
 use Illuminate\Support\ServiceProvider;
 use Sqits\ApiSkeleton\Console\Commands\ApiSkeletonMakeCommand;
+use Sqits\ApiSkeleton\Console\Commands\RepositoryMakeCommand;
+use Sqits\ApiSkeleton\Console\Commands\ServiceMakeCommand;
 
 class ApiSkeletonServiceProvider extends ServiceProvider
 {
@@ -18,9 +20,15 @@ class ApiSkeletonServiceProvider extends ServiceProvider
             __DIR__.'/../config/apiskeleton.php' => config_path('apiskeleton.php'),
         ], 'config');
 
+        $this->publishes([
+            __DIR__.'/../resources/stubs' => resource_path('stubs/apiskeleton'),
+        ], 'stubs');
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ApiSkeletonMakeCommand::class,
+                ServiceMakeCommand::class,
+                RepositoryMakeCommand::class,
             ]);
         }
     }
