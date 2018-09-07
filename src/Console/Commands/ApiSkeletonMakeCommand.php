@@ -80,13 +80,13 @@ class ApiSkeletonMakeCommand extends Command
         $this->askNamespace();
         $this->askName();
 
-//        $this->makeModel();
-//        $this->makeController();
-//        $this->makeRequests();
-//        $this->makeResources();
-//        $this->makeTests();
-//        $this->makeSeeders();
-//        $this->makeFactory();
+        $this->makeModel();
+        $this->makeController();
+        $this->makeRequests();
+        $this->makeResources();
+        $this->makeTests();
+        $this->makeSeeders();
+        $this->makeFactory();
 
         $this->makeService();
         $this->makeRepository();
