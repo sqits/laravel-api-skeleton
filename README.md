@@ -230,6 +230,7 @@ The stub files are placed inside your resources folder and will contain:
 resources 
 └───stubs
     └───apiskeleton
+        |   service.stub
         |   repository.stub
 ```
 
