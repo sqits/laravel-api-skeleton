@@ -1,6 +1,8 @@
 # Package to create api skeletons with artisan
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/sqits/laravel-api-skeleton.svg?style=flat-square)](https://packagist.org/packages/sqits/laravel-api-skeleton)
 [![StyleCI](https://github.styleci.io/repos/147676542/shield)](https://styleci.io/repos/147676542)
+[![Total Downloads](https://img.shields.io/packagist/dt/sqits/laravel-api-skeleton.svg?style=flat-square)](https://packagist.org/packages/sqits/laravel-api-skeleton)
 
 This Laravel package creates an artisan command to generate an api skeleton.
 
@@ -64,7 +66,7 @@ tests
 
 ## Installation and usage
 
-This package requires PHP 7 and Laravel 5.6 or higher. Install the package by running the following command in your console;
+This package requires PHP 7.1 and Laravel 5.6 or higher. Install the package by running the following command in your console;
 
 ``` bash
 composer require sqits/laravel-api-skeleton

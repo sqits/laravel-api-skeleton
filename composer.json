@@ -2,6 +2,7 @@
     "name": "sqits/laravel-api-skeleton",
     "description": "Package to create a complete Laravel API resource according to stub files.",
     "keywords": ["laravel", "api", "resource", "crud", "skeleton", "artisan"],
+    "homepage": "https://github.com/sqits/laravel-api-skeleton",
     "license": "MIT",
     "authors": [
         {
@@ -23,11 +24,11 @@
             "url": "https://github.com/sqits/laravel-api-skeleton"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": "^7.1",
-        "laravel/framework": "~5.6.0|~5.7.0"
+        "laravel/framework": "^5.6"
     },
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Sqits\\ApiSkeleton\\": "src/"
