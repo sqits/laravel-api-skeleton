@@ -513,7 +513,7 @@ class ApiSkeletonMakeCommand extends Command
 
         if ($this->option('repository') || $this->askRepository()) {
             $factoryName = sprintf(
-                '%s/%sFactory',
+                '%s/%sRepository',
                 $this->namespace,
                 $this->modelName
             );
